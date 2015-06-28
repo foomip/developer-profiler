@@ -1,0 +1,59 @@
+.background-image {
+  position: fixed;
+  z-index: 0;
+  top: 4em;
+  left: 0;
+  width: 100%;
+  height: 50em;
+  background: url(/assets/images/backgrounds/index.jpg);
+  background-size: cover;
+  background-position: center;
+  -webkit-filter: opacity(1) blur(5px);
+  -moz-filter: opacity(1) blur(5px);
+  -o-filter: opacity(1) blur(5px);
+  -ms-filter: opacity(1) blur(5px);
+  filter: opacity(1) blur(5px);
+}
+
+.outlet {
+  position: fixed;
+  top: 4em;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  text-align: center;
+  padding: 2em 0 2em 0;
+}
+
+.outlet .main-content {
+  padding: 0.8em;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  background-color: rgba(255,255,255,0.5);
+}
+
+@media screen and (min-width: 1024px) {
+  .outlet .main-content p {
+    font-size: 1.5em;
+    line-height: 1.5;
+  }
+
+  .outlet .main-content {
+    margin: 5em auto auto auto;
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .outlet .main-content p {
+    font-size: 1.2em;
+    line-height: 1.1;
+  }
+
+  .outlet .main-content {
+    margin: -1em 0.2em 0 0.2em;
+  }
+}
