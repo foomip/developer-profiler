@@ -1,0 +1,57 @@
+.social-media-icons-mobile .close-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.social-media-icons-mobile .media-links img {
+  width: 40%;
+  cursor: pointer;
+
+  -webkit-transition: width 0.1s linear;
+  -moz-transition: width 0.1s linear;
+  -o-transition: width 0.1s linear;
+  -ms-transition: width 0.1s linear;
+  transition: width 0.1s linear;
+}
+
+.social-media-icons-mobile .media-links img:hover {
+  width: 50%;
+}
+
+@media screen and (max-width: 1023px) {
+  .social-media-mobile {
+    position: fixed;
+    bottom: 0.5em;
+    right: 0.5em;
+  }
+
+  .social-media-icons-mobile {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    color: rgb(254, 254, 254);
+    background-color: rgba(43, 43, 43, 0.95);
+    border-style: solid;
+    border-width: 1pt;
+    border-color: rgba(114, 114, 114, 0.9);
+
+    -webkit-transition: height 0.3s ease-in-out;
+    -moz-transition: height 0.3s ease-in-out;
+    -o-transition: height 0.3s ease-in-out;
+    -ms-transition: height 0.3s ease-in-out;
+    transition: height 0.3s ease-in-out;
+  }
+
+  .social-media-icons-mobile.open {
+    height: 11em;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .social-media-mobile, .social-media-icons-mobile {
+    display: none;
+  }
+}

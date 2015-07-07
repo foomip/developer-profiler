@@ -1,0 +1,5 @@
+@(imageDetails: BackgroundImage)
+
+<input id="image-details-title" type="hidden" value="@imageDetails.title" />
+<img class="background-details-image" src="@imageDetails.imagePath" alt="@imageDetails.title" />
+<p class="background-details-description">@imageDetails.description</p>

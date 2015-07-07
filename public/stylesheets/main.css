@@ -1,4 +1,12 @@
+body {
+  font-family: 'Dosis', sans-serif;
+}
+
 .main-outlet {
   width: 100%;
   margin: 0 0.5em 0 0.5em;
+}
+
+.xp-tooltip {
+  font-size: 1em !important;
 }

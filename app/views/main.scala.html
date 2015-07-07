@@ -1,34 +1,39 @@
-@(title: String,
-menuOptions: List[String] = List("Work history", "Skills matrix"))(content: Html)
+@(title: String, menuOptions: List[String] = List(
+    "About me", "Work history", "Skills matrix", "Blog"
+  )
+)(content: Html)
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@title</title>
 
-    <script src="@routes.Assets.versioned("bower_components/webcomponentsjs/webcomponents-lite.js")"></script>
+    <script src="@routes.Assets.versioned("bower_components/jquery/dist/jquery.min.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("bower_components/webcomponentsjs/webcomponents-lite.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("bower_components/jbox/Source/jBox.min.js")" type="text/javascript"></script>
+
+    <link href="@routes.Assets.versioned("bower_components/jbox/Source/jBox.css")" rel="stylesheet" type="text/css"/>
 
     <!--polymer web components-->
-    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-toolbar/mat-toolbar.html")">
-    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-icons/action-icons.html")">
-    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-icons/navigation-icons.html")">
-    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-menu/mat-menu.html")">
-    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-menu-button/mat-menu-button.html")">
-    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-option/mat-option.html")">
-    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-text-field/mat-text-field.html")">
-    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-header-panel/mat-header-panel.html")">
-    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-button/mat-button.html")">
+    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-toolbar/mat-toolbar.html")"/>
+    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-icons/action-icons.html")"/>
+    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-icons/navigation-icons.html")"/>
+    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-menu/mat-menu.html")"/>
+    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-menu-button/mat-menu-button.html")"/>
+    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-option/mat-option.html")"/>
+    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-text-field/mat-text-field.html")"/>
+    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-header-panel/mat-header-panel.html")"/>
+    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-button/mat-button.html")"/>
+    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-avatar/mat-avatar.html")"/>
+    <link rel="import" href="@routes.Assets.versioned("bower_components/mat-tooltip/mat-tooltip.html")"/>
     <!--end polymer web components-->
 
-    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
-    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/toolbar.css")">
-    <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
-
-    <script src="@routes.Assets.versioned("bower_components/markdown/lib/markdown.js")" type="text/javascript"></script>
-    <script src="@routes.Assets.versioned("bower_components/jquery/dist/jquery.min.js")" type="text/javascript"></script>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")"/>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/toolbar.css")"/>
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")"/>
   </head>
   <body>
-    <mat-header-panel background="grey-50" mode="fixed">
+    <mat-header-panel background="grey-50" mode="fixed" scroller>
       <mat-header class="main-toolbar" background="blue-900">
         <span class="logo">
           <a href="@routes.Application.index">
@@ -61,4 +66,9 @@ menuOptions: List[String] = List("Work history", "Skills matrix"))(content: Html
         </div>
       </mat-content>
     </mat-header-panel>
+
+    <link href="//fonts.googleapis.com/css?family=Dosis" rel="stylesheet" type="text/css"/>
+
+    <script src="@routes.Assets.versioned("bower_components/markdown/lib/markdown.js")" type="text/javascript"></script>
   </body>
+</html>
