@@ -1,0 +1,54 @@
+.background-image {
+  position: fixed;
+  z-index: 0;
+  top: 4em;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(/assets/images/backgrounds/about_site.jpg);
+  background-size: cover;
+  background-position: center;
+
+  -webkit-filter: opacity(0.8) blur(1px);
+  -moz-filter: opacity(0.8) blur(1px);
+  -o-filter: opacity(0.8) blur(1px);
+  -ms-filter: opacity(0.8) blur(1px);
+  filter: opacity(0.8) blur(1px);
+}
+
+.outlet .main-content {
+  background-color: rgba(255,255,255,0.8);
+  text-align: left;
+  height: 90%;
+  overflow: scroll;
+}
+
+@media screen and (min-width: 1024px) {
+  .outlet .main-content {
+    line-height: 1.2em;
+    margin: 2% auto auto auto;
+    width: 80%;
+    font-size: 1.4em;
+  }
+
+  .outlet .main-content img {
+    width: 30%;
+    float: right;
+    padding-right: 0.5em;
+  }
+
+  .tech-list {
+    margin-left: -0.5em;
+    line-height: 1.4em;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .outlet .main-content {
+    margin: -1em 0.2em 0 0.2em;
+  }
+
+  .outlet .main-content img {
+    width: 99%;
+  }
+}

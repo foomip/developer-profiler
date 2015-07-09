@@ -16,27 +16,6 @@
   filter: opacity(0.8) blur(1px);
 }
 
-.outlet {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  width: 100%;
-  text-align: center;
-  padding: 2em 0 2em 0;
-}
-
-.outlet .main-content {
-  padding: 0.8em;
-  background-color: rgba(255,255,255,0.5);
-
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px;
-}
-
 .social-media-icons {
   text-align: center;
 }

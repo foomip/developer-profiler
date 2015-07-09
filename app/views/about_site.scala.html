@@ -1,0 +1,45 @@
+@main(title = "Developer Profiler - About me") {
+  <div class="outlet">
+    <div id="main-content" class="main-content">
+      <p>
+        I have seen a few sites out there where people have set up their own personal websites. However I
+        wanted this be more than just an "about me" site. I wanted it to be a place where I could experiment
+        with the latest tools and technologies on the web.
+      </p>
+      <img src="@routes.Assets.versioned("images/new-developer.jpg")"/>
+      <p>
+        Typically when building production sites you would stick to more stable and proven web stacks. Obviously
+        the ability to support a project long term and the availability of skills is an important consideration
+        when building applications.
+      </p>
+      <p>
+        Since this site is for my own personal use, I have artistic freedom to choose tools and technologies.
+        You don't really understand something until you have built something with it, so really this is my testing
+        ground for new tech as well as my own personal website.
+      </p>
+      <p>
+        Here is a summary of the tools and technologies used in this site:
+      </p>
+      <div class="tech-list">
+        <ul>
+          <li><strong>Front end:</strong></li>
+          <ul>
+              <li>Javascript (Including <a href="http://es6-features.org" target="_blank">EcmaScript 6</a> for webapp).</li>
+              <li><a href="https://jquery.com/" target="_blank">Jquery 2.1.4</a>.</li>
+              <li><a href="http://webcomponents.org/" target="_blank">WebComponents</a>, <a href="https://github.com/webcomponents/webcomponentsjs" target="_blank">WebComponentsJS</a> for browser compatibility and <a href="http://expandjs.com/" target="_blank">ExpandJS</a> (0.9.3 Beta) as the web components framework.</li>
+              <li><a href="http://www.css3.info/" target="_blank">CSS3</a> and <a href="http://sass-lang.com/" target="_blank">SASS</a> for all styling and transition animations.</li>
+          </ul><br/>
+          <li><strong>Back end:</strong></li>
+          <ul>
+            <li><a href="https://www.playframework.com/documentation/2.4.x/Home" target="_blank">Play 2.4</a> as the server side Framework and <a href="http://scala-lang.org/" target="_blank">Scala 2.11</a> as the main programming language.</li>
+            <li><a href="http://slick.typesafe.com/doc/3.0.0/" target="_blank">Slick 3.0</a> as the rective functional database mapper and <a href="https://www.sqlite.org/" target="_blank">SQLite</a> as the database engine.</li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+  </div>
+  @about_photo(page = "about_site")
+
+  <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/about_site.css")">
+  <script src="@routes.Assets.versioned("javascripts/main_content_sizing.js")" type="text/javascript"></script>
+}

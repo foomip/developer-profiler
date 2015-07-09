@@ -1,0 +1,36 @@
+@(numberOfYears: Int, numberFrontEndYears: Int)
+
+@main(title = "Developer Profiler - About me") {
+  <div class="outlet">
+    <div id="main-content" class="main-content">
+      <p>
+        I have been a software developer for about @numberOfYears years. I originally started programming
+        in Visual Basic and C# .Net stack. I quickly moved into the Unix/Linux world where I have been working
+        to date.
+      </p>
+      <p>
+        More recently I have started doing more work in the front-end arena (for about @numberFrontEndYears years now).
+        I really enjoy the different aspects of front-end and back-end development and look forward to projects that allow
+        me to swap between the two different arenas.
+      </p>
+      <p>
+        I enjoy going to meetups and have done the occasional talk. Have a look at my
+        <a class="meetup-link" href="http://www.meetup.com/members/50346172/" target="_blank">Meetup profile</a>.
+      </p>
+        <div class="rubyfuza-video">
+            <iframe src="https://www.youtube.com/embed/qof3i_AKGTU" frameborder="0" allowfullscreen></iframe>
+        </div>
+      <p>
+        I was also a speaker at <a href="http://www.rubyfuza.org/2014" target="_blank">RubyFuZA 2014</a>,
+        have a look at the YouTube video of my presentation.
+      </p>
+      <p>
+        Other than that (with the very limited spare time I have left) I enjoy reading, cycling and playing chess.
+      </p>
+    </div>
+  </div>
+  @about_photo(page = "about_me")
+
+  <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/about_me.css")">
+  <script src="@routes.Assets.versioned("javascripts/main_content_sizing.js")" type="text/javascript"></script>
+}

@@ -5,7 +5,8 @@
 }
 
 .social-media-icons-mobile .media-links img {
-  width: 40%;
+  width: 50%;
+  max-width: 15em;
   cursor: pointer;
 
   -webkit-transition: width 0.1s linear;
@@ -13,10 +14,6 @@
   -o-transition: width 0.1s linear;
   -ms-transition: width 0.1s linear;
   transition: width 0.1s linear;
-}
-
-.social-media-icons-mobile .media-links img:hover {
-  width: 50%;
 }
 
 @media screen and (max-width: 1023px) {
@@ -46,7 +43,7 @@
   }
 
   .social-media-icons-mobile.open {
-    height: 11em;
+    height: 15em;
   }
 }
 

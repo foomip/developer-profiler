@@ -1,8 +1,8 @@
-@(title: String, menuOptions: List[String] = List(
-    "About me", "Work history", "Skills matrix", "Blog"
+@(title: String, menuOptions: List[MenuOption] = List(
+    MenuOption(routes.Application.aboutMe().toString, "About me"),
+    MenuOption(routes.Application.aboutSite().toString, "This site")
   )
-)(content: Html)
-<!DOCTYPE html>
+)(content: Html)<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,6 +10,7 @@
 
     <script src="@routes.Assets.versioned("bower_components/jquery/dist/jquery.min.js")" type="text/javascript"></script>
     <script src="@routes.Assets.versioned("bower_components/webcomponentsjs/webcomponents-lite.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/main.js")" type="text/javascript"></script>
     <script src="@routes.Assets.versioned("bower_components/jbox/Source/jBox.min.js")" type="text/javascript"></script>
 
     <link href="@routes.Assets.versioned("bower_components/jbox/Source/jBox.css")" rel="stylesheet" type="text/css"/>
@@ -33,39 +34,48 @@
     <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")"/>
   </head>
   <body>
-    <mat-header-panel background="grey-50" mode="fixed" scroller>
-      <mat-header class="main-toolbar" background="blue-900">
-        <span class="logo">
-          <a href="@routes.Application.index">
-            <img src="@routes.Assets.versioned("images/profile_icon.png")" alt="Nelson Pascoal"/>
-          </a>
-        </span>
-        <span class="nav-left">
-          @for(option <- menuOptions) {
-            <mat-button label="@option"></mat-button>
-          }
-        </span>
-        <span class="nav-right">
-          <input type="text" class="toolbar-search-input"/>
-          <mat-icon-button icon="action:search"></mat-icon-button>
-        </span>
-        <span class="nav-right-mobile">
-          <mat-menu-button target="mobile-toolbar-menu"></mat-menu-button>
-          <mat-menu id="mobile-toolbar-menu">
+    <div class="loading-content-container">
+      One moment please...<br/>
+      <img src="@routes.Assets.versioned("images/page-loading.gif")"/>
+    </div>
+    <div class="main-content-container hidden invisible">
+      <mat-header-panel background="grey-50" mode="fixed" scroller>
+        <mat-header class="main-toolbar" background="blue-900">
+          <span class="logo">
+            <a href="@routes.Application.index">
+              <img src="@routes.Assets.versioned("images/profile_icon.png")" alt="Nelson Pascoal"/>
+            </a>
+          </span>
+          <span class="nav-left">
             @for(option <- menuOptions) {
-              <mat-option label="@option"></mat-option>
+              <mat-button label="@option.name" href="@option.path"></mat-button>
             }
-            <mat-divider></mat-divider>
-            <mat-text-field label="Search" floating-label></mat-text-field>
-          </mat-menu>
-        </span>
-      </mat-header>
-      <mat-content>
-        <div class="main-outlet" align="center">
-          @content
-        </div>
-      </mat-content>
-    </mat-header-panel>
+          </span>
+          <span class="nav-right">
+            <input type="text" class="toolbar-search-input"/>
+            <mat-icon-button icon="action:search"></mat-icon-button>
+          </span>
+          <span class="nav-right-mobile">
+            <mat-menu-button target="mobile-toolbar-menu"></mat-menu-button>
+            <mat-menu id="mobile-toolbar-menu">
+              @for(option <- menuOptions) {
+                <a href="@option.path">
+                  <mat-option label="@option.name" href="@option.path"></mat-option>
+                </a>
+              }
+              <mat-divider></mat-divider>
+              <mat-text-field label="Search" floating-label></mat-text-field>
+            </mat-menu>
+          </span>
+        </mat-header>
+        <mat-content>
+          <div class="main-outlet" align="center">
+            <div class="background-image"></div>
+            @content
+          </div>
+        </mat-content>
+      </mat-header-panel>
+    </div>
 
     <link href="//fonts.googleapis.com/css?family=Dosis" rel="stylesheet" type="text/css"/>
 

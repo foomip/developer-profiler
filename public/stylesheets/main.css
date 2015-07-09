@@ -10,3 +10,61 @@ body {
 .xp-tooltip {
   font-size: 1em !important;
 }
+
+.loading-content-container {
+  width: 100%;
+  text-align: center:
+  font-family: Arial;
+  font-size: 1.5em;
+  text-align: center;
+
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  -ms-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.loading-content-container img {
+  width: 90%;
+  max-width: 500px;
+}
+
+.main-content-container {
+  opacity: 1;
+
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  -ms-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.hidden {
+  display: none;
+}
+
+.invisible {
+  opacity: 0;
+}
+
+.outlet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  text-align: center;
+  padding: 2em 0 2em 0;
+}
+
+.outlet .main-content {
+  padding: 0.8em;
+  background-color: rgba(255,255,255,0.5);
+
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+}
