@@ -23,6 +23,14 @@
   overflow: scroll;
 }
 
+.tech-list ul {
+  list-style: none;
+}
+
+.tech-list ul ul {
+  list-style-image: url("/assets/images/info-bullet.png");
+}
+
 @media screen and (min-width: 1024px) {
   .outlet .main-content {
     line-height: 1.2em;
@@ -37,9 +45,13 @@
     padding-right: 0.5em;
   }
 
-  .tech-list {
-    margin-left: -0.5em;
-    line-height: 1.4em;
+  .tech-list ul {
+    margin-left: -2em;
+    line-height: 1.5em;
+  }
+
+  .tech-list ul ul {
+    margin-left: 0.1em;
   }
 }
 
@@ -50,5 +62,17 @@
 
   .outlet .main-content img {
     width: 99%;
+  }
+
+  .desktop-paragraph {
+    display: none;
+  }
+
+  .tech-list {
+    margin-left: -2.8em;
+  }
+
+  .tech-list ul ul {
+    margin-left: -1.2em;
   }
 }

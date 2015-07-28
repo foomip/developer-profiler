@@ -12,4 +12,4 @@ VALUES (
 
 # --- !Downs
 
-DELETE FROM BackgroundImages WHERE page = 'index';
+DELETE FROM BackgroundImages WHERE page = 'about_me';
