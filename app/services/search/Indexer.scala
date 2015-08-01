@@ -22,11 +22,12 @@ class Indexer extends Actor with ActorLogging with Environment {
   import Indexer.{Done, ReIndex, Busy}
 
   var client = self
+  val updater = context.actorOf(Updater.props)
 
   val dao = new IndexablePageDAO()
   val url = play.api.Play.configuration.getString(s"indexer.$environment.url").getOrElse("http://127.0.0.1:9000")
 
-  lazy val scrapers: Seq[ActorRef] = (1 to 2) map { i => context.actorOf(Scraper.props(url), s"Scraper$i") }
+  lazy val scrapers: Seq[ActorRef] = (1 to 2) map { i => context.actorOf(Scraper.props(url, updater), s"Scraper$i") }
 
   def idle: Receive = {
     case ReIndex =>
