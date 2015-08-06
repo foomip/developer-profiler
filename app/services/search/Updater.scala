@@ -5,9 +5,7 @@ import daos.{PageWordDAO, IndexablePageDAO}
 import models.PageWord
 import play.api.libs.ws.WS
 import play.api.libs.ws.ning.NingWSClient
-import utils.Environment
-import play.api.Play
-import play.api.Play.current
+import utils.{ElasticsearchConfigs, Environment}
 import java.net.URLEncoder
 
 import play.api.libs.json._
@@ -34,7 +32,7 @@ object Updater {
   implicit val normalizeTokensFormat = Json.format[NormalizeTokens]
 }
 
-class Updater extends Actor with ActorLogging with Environment {
+class Updater extends Actor with ActorLogging with Environment with ElasticsearchConfigs {
   import Updater._
   import Scraper.{UpdateSearch, Done, PageData, Failed}
 
@@ -42,10 +40,6 @@ class Updater extends Actor with ActorLogging with Environment {
 
   val pageDao   = new IndexablePageDAO()
   val wordDao   = new PageWordDAO()
-
-  val elasticSearchIndex = Play.configuration.getString("elasticsearch.searchIndex").getOrElse("developer_profiler")
-  val elasticSearchHost  = Play.configuration.getString(s"elasticsearch.$environment.url").getOrElse("http://127.0.0.1:9200")
-  val requestUri         = s"$elasticSearchHost/$elasticSearchIndex/_analyze?text="
 
   def receive = {
     case u: UpdateSearch => normaliseText(u.requestor, u.pageId, u.pageData)

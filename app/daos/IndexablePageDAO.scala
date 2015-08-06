@@ -42,6 +42,12 @@ class IndexablePageDAO(dbName: String = "default") extends HasDatabaseConfig[Jdb
 
   def findById(id: Long) = db.run { queryById(id).result.headOption }
 
+  def pageDescriptionsFor(ids: Seq[Long]) = db.run {
+    (queryAll filter(_.id inSet ids) map { p =>
+      (p.id, p.indexedTitle, p.indexedDescription)
+    }).result
+  }
+
   def updateSearchDescriptions(id: Long, title: String, descr: String) = {
     val description = if(descr.length > 50) s"${descr.substring(0, 47)}..." else descr
 

@@ -7,6 +7,8 @@ import slick.backend.DatabaseConfig
 import slick.driver.JdbcProfile
 
 import scala.concurrent.Future
+import play.api.libs.concurrent.Execution.Implicits._
+import scala.language.postfixOps
 
 /**
  * Created by nelsonpascoal on 2015/07/30.
@@ -34,7 +36,28 @@ class PageWordDAO(dbName: String = "default") extends HasDatabaseConfig[JdbcProf
     ) += p
   }
 
+  private def queryWordMatchStats(words: List[String]) = {
+    val totals = PageWords.groupBy(_.indexablePageId).map {
+      case (pid, w) => (pid, w.size)
+    }
+    val hits = PageWords.filter(_.word inSet words).groupBy(_.indexablePageId).map {
+      case (pid, w) => (pid, w.size)
+    }
+
+    totals joinLeft hits on {
+      case ((pid1, _),(pid2, _)) => pid1 === pid2
+    }
+  }
+
   def removeForPage(pageId: Long) = db.run {
     queryByPage(pageId).delete
   }
+
+  def wordMatches(words: List[String]) = db.run { (queryWordMatchStats(words) filter(_._2.isDefined)).result } map ( _ map {
+    case (x, Some(y)) =>
+      val (pid, total)  = x
+      val (_, hits)     = y
+
+      (pid, total, hits, hits.toFloat / total)
+  } sortBy(_._4) reverse)
 }

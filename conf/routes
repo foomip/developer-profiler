@@ -9,6 +9,8 @@ GET     /about-me                   controllers.Application.aboutMe
 
 GET     /about-site                 controllers.Application.aboutSite
 
+POST    /search                     controllers.Application.search
+
 GET     /background/details/:page   controllers.Application.backgroundDetails(page: String)
 
 GET     /webapp/$path<.*>           controllers.WebappProxy.request(path: String)

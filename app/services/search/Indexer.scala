@@ -5,6 +5,7 @@ import daos.IndexablePageDAO
 
 import play.api.libs.concurrent.Execution.Implicits._
 import utils.Environment
+import play.api.Play
 import play.api.Play.current
 
 /**
@@ -22,10 +23,10 @@ class Indexer extends Actor with ActorLogging with Environment {
   import Indexer.{Done, ReIndex, Busy}
 
   var client = self
-  val updater = context.actorOf(Updater.props)
+  val updater = context.actorOf(Updater.props, "Updater")
 
   val dao = new IndexablePageDAO()
-  val url = play.api.Play.configuration.getString(s"indexer.$environment.url").getOrElse("http://127.0.0.1:9000")
+  val url = Play.configuration.getString(s"indexer.$environment.url").getOrElse("http://127.0.0.1:9000")
 
   lazy val scrapers: Seq[ActorRef] = (1 to 2) map { i => context.actorOf(Scraper.props(url, updater), s"Scraper$i") }
 

@@ -2,14 +2,12 @@ package modules
 
 import akka.actor.ActorSystem
 import com.google.inject.{Singleton, AbstractModule}
-import play.api.{Play, Logger}
-import play.api.db.slick.DatabaseConfigProvider
+import play.api.Logger
+import play.api.libs.concurrent.Akka
 import services.search.Supervisor
-import slick.driver.JdbcProfile
+import utils.WaitForPlay
 import sys.process._
 import scala.language.postfixOps
-import scala.concurrent.duration._
-import play.api.libs.concurrent.Execution.Implicits._
 
 /**
  * Created by nelsonpascoal on 2015/07/13.
@@ -20,9 +18,10 @@ object SearchIndexer {
 }
 
 @Singleton
-class SearchIndexer extends AbstractModule {
-  import SearchIndexer.system
+class SearchIndexer extends AbstractModule with WaitForPlay {
   import services.search.Supervisor.Run
+
+  val system = SearchIndexer.system
 
   def configure() = {
     val result = { "which phantomjs" ! }
@@ -35,22 +34,13 @@ class SearchIndexer extends AbstractModule {
 
       waitForPlay {
         Logger.info("Play started - spinning up Search Indexer")
-        val dbConfig = DatabaseConfigProvider.get[JdbcProfile](Play.current)
-        val searchSystem = system.actorOf(Supervisor.props, "SearchSupervisor")
 
+        import play.api.Play.current
+
+        val searchSystem = Akka.system.actorOf(Supervisor.props, "SearchSupervisor")
+
+        system.shutdown()
         searchSystem ! Run
-      }
-    }
-  }
-
-  def waitForPlay(cb: => Unit): Unit = {
-    try {
-      play.api.Play.current
-      cb
-    }
-    catch {
-      case e: RuntimeException => {
-        system.scheduler.scheduleOnce(500 milliseconds){ waitForPlay(cb) }
       }
     }
   }
